@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
- class Debit extends Component {
+ class Debits extends Component {
     render() {
         return (
             <div>
@@ -17,4 +17,4 @@ import { connect } from 'react-redux';
 
 
 
-export default (Debit)
+export default Debits
