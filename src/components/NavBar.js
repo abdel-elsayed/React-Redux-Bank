@@ -8,11 +8,10 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div >
-          
           <ul >
             <li>
             <Link to='/'>
-            bank of react
+            HOME
           </Link>
             </li>
             <li >

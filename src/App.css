@@ -1,48 +1,10 @@
 html {
-  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSiWn0PRKhPPHngN6EUH-nfAT14oyO9jvPGg&usqp=CAU)
+  background: url(https://i.pinimg.com/originals/a3/4c/0f/a34c0f3e27905c99b1ea5278c5698c55.jpg)
     no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .bank-card {
@@ -72,7 +34,6 @@ li a {
   text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #111;
 }
@@ -80,21 +41,41 @@ li a:hover {
 .balance {
   font-family: "Dancing Script", cursive;
   font-size: 40px;
+  color: white;
   margin-bottom: 30px;
 }
 
 .header {
   padding: 0px;
   text-align: center;
+  font-family: "Dancing Script", cursive;
   color: black;
   font-size: 60px;
+}
+
+.button1 {
+  background-color: white;
+  color: #333;
+  padding: 6px 15px;
+  border-radius: 20%;
+}
+
+input {
+  font-size: 1rem;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  margin: 0.3125rem;
 }
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
   text-align: center;
-  background-color: #b8cc92;
+  background-color: #333;
   width: 60%;
   margin: auto;
   border-radius: 10%;
@@ -112,7 +93,7 @@ li a:hover {
 }
 
 .styled-table thead tr {
-  background-color: #3f4d25;
+  background-color: #333;
   color: #ffffff;
   text-align: left;
 }
@@ -131,10 +112,12 @@ li a:hover {
 }
 
 .styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #3f4d25;
+  border-bottom: 2px solid #333;
 }
 
-.styled-table tbody tr.active-row {
+.not-found {
+  font-family: "Courier New", monospace;
+  font-size: 30px;
+  text-align: center;
   font-weight: bold;
-  color: #009879;
 }

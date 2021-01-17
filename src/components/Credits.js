@@ -6,9 +6,6 @@ let customAmount = 0;
     
 const Credit = ({transactions, balance, credit}) => {
 
-
-    
-
     const handleChange = (e) => {
         customAmount = e.target.value;
         console.log("BALANCE FROM CREDIT : ", balance)
@@ -19,9 +16,8 @@ const Credit = ({transactions, balance, credit}) => {
        <h1 className="header">CREDITS</h1>
             <div className="card">
                 <h2 className="balance">Balance: ${balance}</h2>
-                    <label>Credit Amount: </label><br />
-                    <input type="text" name="creditAmount" onChange={handleChange} placeholder="Enter Amount..." ></input>
-                    <button type="submit" onClick={() => credit({type: CREDIT})}>Submit</button>
+                    <input type="text" name="creditAmount" onChange={handleChange} placeholder="Enter Credit Amount..." ></input>
+                    <button type="submit" className="button1" onClick={() => credit({type: CREDIT})}>Credit</button>
             </div>
         <div>
         { transactions.length  ? 
@@ -54,7 +50,7 @@ const Credit = ({transactions, balance, credit}) => {
                           </td>
                       </tr>: ""))}
               </tbody>
-          </table> :  <div>No transactions were found.</div>
+          </table> :  <div className="not-found">No Credit transactions were found.</div>
         }
       </div>
       </>
@@ -67,7 +63,6 @@ const mapStateToProps = state => ({
   });
   
 const mapDispatchToProps = (dispatch) => {
-    // the prop that you want this component to have access to
     return {
       credit: () => dispatch({ type:CREDIT, payload:{customAmount}}),
       }

@@ -7,9 +7,6 @@ let customAmount = 0;
 
 const Debits = ({transactions, balance, debit}) => {
 
-
-    
-
     const handleChange = (e) => {
         customAmount = e.target.value;
         console.log("transaction type: ", transactions.type)
@@ -20,9 +17,8 @@ const Debits = ({transactions, balance, debit}) => {
             <h1 className="header">DEBITS</h1>
             <div className="card">
                 <h2 className="balance">Balance: ${balance}</h2>
-                    <label>Debit Amount: </label><br />
-                    <input type="text" name="debitAmount" onChange={handleChange} placeholder="Enter Amount..." ></input>
-                    <button type="submit" onClick={() => debit({type: DEBIT})}>Submit</button>
+                    <input type="text" name="debitAmount" onChange={handleChange} placeholder="Enter Debit Amount..." ></input>
+                    <button type="submit" className="button1" onClick={() => debit({type: DEBIT})}>Debit</button>
             </div>
             <div>
               { transactions.length  ? 
@@ -55,7 +51,7 @@ const Debits = ({transactions, balance, debit}) => {
                                 </td>
                             </tr>: ""))}
                     </tbody>
-                </table> :  <div>No transactions were found.</div>
+                </table> :  <div className="not-found">No Debit transactions were found.</div>
               }
             </div>
         </>
@@ -68,9 +64,8 @@ const mapStateToProps = state => ({
     transactions : state.transactions, 
   });
 
-const mapDispatchToProps = (dispatch) => {
-    // the prop that you want this component to have access to
-    return {
+const mapDispatchToProps = (dispatch) => { 
+   return {
       debit: () => dispatch({ type:DEBIT, payload:{customAmount}}),
       }
   }

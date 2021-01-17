@@ -1,6 +1,5 @@
 //importing action names 
-import { DEBIT, CREDIT } from './actions'  
-import Debits from './components/Debits';
+import { DEBIT, CREDIT } from './actions'
 
 
 //reducer
