@@ -1,37 +1,56 @@
 //importing action names 
-import { DEBIT, CREDIT, GET_BALANCE, GET_DEBITS, GET_CREDITS, GET_TRANSACTIONS } from './actions'  
+import { DEBIT, CREDIT } from './actions'  
 import Debits from './components/Debits';
 
 
 //reducer
 function reducer(state, action){
+    let today = new Date();
+
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    let dateTime = date+' '+time;
     switch (action.type) {
         case DEBIT:
-            return{ ...state, balance: state.balance + parseInt(action.payload.customAmount)};
+            return{ 
+                ...state,
+                balance: state.balance + parseInt(action.payload.customAmount),
+                transactions: [
+                    {
+                        
+                      date: dateTime,
+                      type: 'Deposit',
+                      amount: parseInt(action.payload.customAmount),
+                      balance: state.balance + parseInt(action.payload.customAmount),
+                      
+                    },
+                ...state.transactions,
+                ],
+            };
 
         case CREDIT:
-            return{ ...state, balance: state.balance - parseInt(action.payload.customAmount)};
-
-        case GET_BALANCE:
-            console.log("GETTING BALNACE...")
-            return{ ...state};
-
-        case GET_DEBITS:
-            console.log("GETTING DEBITS...")
-            return{ ...state};  
-
-        case GET_CREDITS:
-            console.log("GETTING CREDITS...")
-            return{ ...state};
-
-        case GET_TRANSACTIONS:
-            console.log("GETTING TRANSACTIONS...")
-            return{ ...state};
+            return{ 
+                ...state,
+                balance: state.balance - parseInt(action.payload.customAmount),
+                transactions: [
+                    {
+                        
+                      date: dateTime,
+                      type: 'Withdraw',
+                      amount: parseInt(action.payload.customAmount),
+                      balance: state.balance - parseInt(action.payload.customAmount),
+                      
+                    },
+                ...state.transactions,
+                ],
+            };
 
         default:
-            break;
+            return state;
     }
-    return state;
+   
   }
 
 

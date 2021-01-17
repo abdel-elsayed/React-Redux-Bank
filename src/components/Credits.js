@@ -4,7 +4,7 @@ import {CREDIT} from '../actions'
 
 let customAmount = 0;
     
-const Credit = ({balance, credit}) => {
+const Credit = ({transactions, balance, credit}) => {
 
 
     
@@ -15,23 +15,58 @@ const Credit = ({balance, credit}) => {
     }
 
     return (
+        <>
+       <h1 className="header">CREDITS</h1>
+            <div className="card">
+                <h2 className="balance">Balance: ${balance}</h2>
+                    <label>Credit Amount: </label><br />
+                    <input type="text" name="creditAmount" onChange={handleChange} placeholder="Enter Amount..." ></input>
+                    <button type="submit" onClick={() => credit({type: CREDIT})}>Submit</button>
+            </div>
         <div>
-            <h1>CREDITS</h1>
-            <h2>Balance: {balance}</h2>
-            
-                <label>Credit Amount: </label><br />
-                <input type="text" name="debitAmount" onChange={handleChange} placeholder="Enter Amount..." ></input>
-                <button type="submit" onClick={() => credit({type: CREDIT})}>Submit</button>
-        </div>
+        { transactions.length  ? 
+          <table className="styled-table" >
+              <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th>Balance</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {transactions.map(transaction => (
+                      transaction.type === "Withdraw" ?
+                      <tr key={transaction.date}>
+                          <td>{transaction.date}</td>
+                          <td>{transaction.type}</td>
+                          <td>
+                              {`${
+                                  transaction.type === 'Deposit'
+                                  ? `+${transaction.amount.toFixed(2)}`
+                                  : transaction.type === 'Withdraw'
+                                  ? `-${transaction.amount.toFixed(2)}`
+                                  : transaction.amount
+                              }`}
+                          </td>
+                          <td>
+                              {`${transaction.balance.toFixed(2)}`}
+                          </td>
+                      </tr>: ""))}
+              </tbody>
+          </table> :  <div>No transactions were found.</div>
+        }
+      </div>
+      </>
     )
 }
 
 const mapStateToProps = state => ({
-    balance: state.balance 
+    balance: state.balance,
+    transactions: state.transactions
   });
   
-const mapDispatchToProps = (dispatch, ownProps) => {
-    const {balance} = ownProps
+const mapDispatchToProps = (dispatch) => {
     // the prop that you want this component to have access to
     return {
       credit: () => dispatch({ type:CREDIT, payload:{customAmount}}),

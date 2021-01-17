@@ -1,3 +1,11 @@
+html {
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSiWn0PRKhPPHngN6EUH-nfAT14oyO9jvPGg&usqp=CAU)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .App {
   text-align: center;
 }
@@ -39,11 +47,8 @@
 
 .bank-card {
   margin: auto;
-
   width: 60%;
-
   border: 5px solid #329432;
-
   padding: 10px;
 }
 
@@ -70,4 +75,66 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #111;
+}
+
+.balance {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.header {
+  padding: 0px;
+  text-align: center;
+  color: black;
+  font-size: 60px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #b8cc92;
+  width: 60%;
+  margin: auto;
+  border-radius: 10%;
+  margin-top: 10%;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 60%;
+  border-radius: 10%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #3f4d25;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #3f4d25;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
 }

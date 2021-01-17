@@ -1,34 +1,71 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import {DEBIT} from '../actions'
+import '../App.css'
 
 let customAmount = 0;
 
-const Debits = ({balance, debit}) => {
+const Debits = ({transactions, balance, debit}) => {
 
 
     
 
     const handleChange = (e) => {
         customAmount = e.target.value;
-        console.log("am being called yaaay: ", customAmount)
+        console.log("transaction type: ", transactions.type)
     }
 
     return (
-        <div>
-            <h1>DEBITS</h1>
-            <h2>Balance: ${balance}</h2>
-            
-                <label>Debit Amount: </label><br />
-                <input type="text" name="debitAmount" onChange={handleChange} placeholder="Enter Amount..." ></input>
-                <button type="submit" onClick={() => debit({type: DEBIT})}>Submit</button>
-        </div>
+        <>
+            <h1 className="header">DEBITS</h1>
+            <div className="card">
+                <h2 className="balance">Balance: ${balance}</h2>
+                    <label>Debit Amount: </label><br />
+                    <input type="text" name="debitAmount" onChange={handleChange} placeholder="Enter Amount..." ></input>
+                    <button type="submit" onClick={() => debit({type: DEBIT})}>Submit</button>
+            </div>
+            <div>
+              { transactions.length  ? 
+                <table className="styled-table" >
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {transactions.map(transaction => (
+                            transaction.type === "Deposit" ?
+                            <tr key={transaction.date}>
+                                <td>{transaction.date}</td>
+                                <td>{transaction.type}</td>
+                                <td>
+                                    {`${
+                                        transaction.type === 'Deposit'
+                                        ? `+${transaction.amount.toFixed(2)}`
+                                        : transaction.type === 'Withdraw'
+                                        ? `-${transaction.amount.toFixed(2)}`
+                                        : transaction.amount
+                                    }`}
+                                </td>
+                                <td>
+                                    {`${transaction.balance.toFixed(2)}`}
+                                </td>
+                            </tr>: ""))}
+                    </tbody>
+                </table> :  <div>No transactions were found.</div>
+              }
+            </div>
+        </>
     )
 }
 
 
 const mapStateToProps = state => ({
-    balance: state.balance 
+    balance: state.balance,
+    transactions : state.transactions, 
   });
 
 const mapDispatchToProps = (dispatch) => {
