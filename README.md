@@ -1,7 +1,7 @@
 # React/Redux Bank Web Application
 This project is part of Tech Talent Pipeline Full-Satck web-development bootcamp.
 
-Built using react, react router, redux.
+Built using react, react router, and redux.
 
 ## Code-sandbox link to view and test the project
 
