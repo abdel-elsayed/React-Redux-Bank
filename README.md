@@ -3,7 +3,11 @@ This project is part of Tech Talent Pipeline Full-Satck web-development bootcamp
 
 Built using react, react router, and redux.
 
-## Code-sandbox link to view and test the project
+## View Website
+
+https://abdels-bank-of-react-redux.netlify.app/
+
+## Code-sandbox link to view and test the project's Code
 
 https://codesandbox.io/s/objective-dream-dzj9k
 
