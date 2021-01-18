@@ -7,7 +7,6 @@ import './App.css';
 
 import {Provider} from 'react-redux'
 import {createStore} from'redux'
-import { useSelector } from 'react-redux';
 import reducer from './reducer'
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
